@@ -6,7 +6,9 @@ const NavBar = ({ user, handleLogout }) => {
     <nav>
       {user ?
         <ul>
-          <li>Welcome, {user.name}</li>
+          <li><NavLink to="/">Welcome, {user.name}</NavLink></li>
+          <li><NavLink to="/fish">View Fish</NavLink></li>
+          <li><NavLink to="/add">Add Catch</NavLink></li>
           <li><NavLink to="/profiles">Profiles</NavLink></li>
           <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
           <li><NavLink to="/auth/change-password">Change Password</NavLink></li>
