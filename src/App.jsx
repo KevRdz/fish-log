@@ -8,6 +8,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import AddFish from './pages/AddFish/AddFish'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -53,6 +54,10 @@ function App() {
         <Route
           path="/auth/login"
           element={<Login handleAuthEvt={handleAuthEvt} />}
+        />
+        <Route
+          path="/add"
+          element={<AddFish />}
         />
         <Route
           path="/auth/change-password"
