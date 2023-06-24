@@ -16,13 +16,16 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as fishService from './services/fishService'
 
 // styles
 import './App.css'
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
+  const [fishes, setFishes] = useState([])
   const navigate = useNavigate()
+
 
   const handleLogout = () => {
     authService.logout()
@@ -32,6 +35,11 @@ function App() {
 
   const handleAuthEvt = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddFish = async newFishData => {
+    const newFish = await fishService.create(newFishData)
+    setFishes([...fishes, newFish])
   }
 
   return (
@@ -57,7 +65,7 @@ function App() {
         />
         <Route
           path="/add"
-          element={<AddFish />}
+          element={<AddFish handleAddFish={handleAddFish}/>}
         />
         <Route
           path="/auth/change-password"
