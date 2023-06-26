@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -9,6 +9,7 @@ import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import AddFish from './pages/AddFish/AddFish'
+import FishList from './pages/FishList/FishList'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -26,6 +27,13 @@ function App() {
   const [fishes, setFishes] = useState([])
   const navigate = useNavigate()
 
+  useEffect(() => {
+    const fetchAllFishes = async () => {
+      const FishData = await fishService.getAll()
+      setFishes(FishData)
+    }
+    fetchAllFishes()
+  }, [])
 
   const handleLogout = () => {
     authService.logout()
@@ -66,6 +74,10 @@ function App() {
         <Route
           path="/add"
           element={<AddFish handleAddFish={handleAddFish}/>}
+        />
+        <Route
+          path="/fish"
+          element={<FishList fishes={fishes}/>}
         />
         <Route
           path="/auth/change-password"

@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 
 const AddFish = (props) => {
   const [formData, setFormData] = useState({
-    name: " ",
+    type: " ",
     weight: 0,
     reel: "...",
     bait: "...",

@@ -1,19 +1,28 @@
 import * as tokenService from './tokenService'
-// eslint-disable-next-line no-undef
-const BASE_URL = `${process.env.REACT_APP_BACK_END_ERVER_URL}/api/fishes`
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/fishes`
 
 async function create(fish) {
-  const res = await fetch(BASE_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${tokenService.getToken()}`
-    },
-    body: JSON.stringify(fish)
-  })
+  try {
+    const res = await fetch(BASE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(fish)
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function getAll() {
+  const res = await fetch(BASE_URL)
   return res.json()
 }
 
 export {
-  create
+  create,
+  getAll
 }
