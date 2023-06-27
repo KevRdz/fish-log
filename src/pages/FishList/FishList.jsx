@@ -7,7 +7,7 @@ const FishList = (props) => {
       <h1>Fish List</h1>
       <div className={styles.container}>
         {props.fishes.map(fish => 
-          <FishCard key={fish._id} fish={fish} handleDeleteFish={props.handleDeleteFish}/>
+          <FishCard key={fish._id} fish={fish} handleDeleteFish={props.handleDeleteFish} user={props.user}/>
         )}
       </div>
     </>

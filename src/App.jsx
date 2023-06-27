@@ -81,7 +81,7 @@ function App() {
         />
         <Route
           path="/fish"
-          element={<FishList fishes={fishes} handleDeleteFish={handleDeleteFish}/>}
+          element={<FishList fishes={fishes} handleDeleteFish={handleDeleteFish} user={user}/>}
         />
         <Route
           path="/auth/change-password"
