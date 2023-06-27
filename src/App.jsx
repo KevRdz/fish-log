@@ -50,6 +50,10 @@ function App() {
     setFishes([...fishes, newFish])
   }
 
+  const handleDeleteFish = id => {
+    setFishes(fishes.filter(fish => fish._id !== id))
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -77,7 +81,7 @@ function App() {
         />
         <Route
           path="/fish"
-          element={<FishList fishes={fishes}/>}
+          element={<FishList fishes={fishes} handleDeleteFish={handleDeleteFish}/>}
         />
         <Route
           path="/auth/change-password"
