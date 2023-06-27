@@ -69,9 +69,9 @@ const AddFish = (props) => {
             onChange={handleChange}
           >
             <option value="...">...</option>
-            <option value="spincast">Spincast</option>
-            <option value="spin">Spinning Reel</option>
-            <option value="fly">Fly Reel</option>
+            <option value="Spincast">Spincast</option>
+            <option value="Spin">Spinning Reel</option>
+            <option value="Fly">Fly Reel</option>
           </select>
           <label htmlFor="bait-input">
             Bait Used
