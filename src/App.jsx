@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import AddFish from './pages/AddFish/AddFish'
 import FishList from './pages/FishList/FishList'
+import EditFish from './pages/EditFish/EditFish'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -83,6 +84,10 @@ function App() {
         <Route
           path="/fish"
           element={<FishList fishes={fishes} handleDeleteFish={handleDeleteFish} user={user}/>}
+        />
+        <Route
+          path="/edit"
+          element={<EditFish />}
         />
         <Route
           path="/auth/change-password"
