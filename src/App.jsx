@@ -50,8 +50,9 @@ function App() {
     setFishes([...fishes, newFish])
   }
 
-  const handleDeleteFish = id => {
-    setFishes(fishes.filter(fish => fish._id !== id))
+  const handleDeleteFish = async id => {
+    const deletedFish = await fishService.deleteOne(id)
+    setFishes(fishes.filter(fish => fish._id !== deletedFish._id))
   }
 
   return (
