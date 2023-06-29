@@ -5,8 +5,8 @@ const AddFish = (props) => {
   const [formData, setFormData] = useState({
     type: " ",
     weight: 0,
-    reel: "...",
-    bait: "...",
+    reel: "N/A",
+    bait: "N/A",
   })
 
   const [validForm, setValidForm] = useState(false)
@@ -68,7 +68,7 @@ const AddFish = (props) => {
             value={formData.reel}
             onChange={handleChange}
           >
-            <option value="...">...</option>
+            <option value="N/A">N/A</option>
             <option value="Spincast Reel">Spincast Reel</option>
             <option value="Baitcasting Reel">Baitcasting Reel</option>
             <option value="Spinning Reel">Spinning Reel</option>
@@ -83,10 +83,10 @@ const AddFish = (props) => {
             value={formData.bait}
             onChange={handleChange}
           >
-            <option value="...">...</option>
-            <option value="Plastic">Plastic</option>
+            <option value="N/A">N/A</option>
+            <option value="Plastic">Plastic Bait</option>
             <option value="Live">Live Bait</option>
-            <option value="artificial">Artificial</option>
+            <option value="Artificial">Artificial Bait</option>
             <option value="Dead">Dead Bait</option>
           </select>
         </div>

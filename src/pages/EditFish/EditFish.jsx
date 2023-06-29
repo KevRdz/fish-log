@@ -52,7 +52,7 @@ const EditFish = (props) => {
           />
         </div>
         <div className="form-group mb-3">
-          <label htmlFor="text">
+          <label htmlFor="reel-input">
             Reel Used
           </label>
           <select 
