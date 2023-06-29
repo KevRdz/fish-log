@@ -56,9 +56,10 @@ function App() {
     setFishes(fishes.filter(fish => fish._id !== deletedFish._id))
   }
 
-  const handleUpdateFish = updatedFishFormData => {
+  const handleUpdateFish = async updatedFishData => {
+    const updatedFish = await fishService.update(updatedFishData)
     const newFishesArray = fishes.map(fish =>
-      fish._id === updatedFishFormData._id ? updatedFishFormData : fish
+      fish._id === updatedFish._id ? updatedFish : fish
     )
     setFishes(newFishesArray)
     navigate('/fish')
