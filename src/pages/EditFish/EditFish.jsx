@@ -1,11 +1,29 @@
-// import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-const EditFish = () => {
+const EditFish = (props) => {
+  const location = useLocation()
+  const [validForm, setValidForm] = useState(true)
+  const formElement = useRef()
+  const [formData, setFormData] = useState(location.state.fish)
+
+  const handleChange = evt => {
+    setFormData({...formData, [evt.target.name]: evt.target.value})
+  }
+
+  useEffect(() => {
+    formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
+  }, [formData])
+
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    props.handleUpdateFish(formData)
+  }
+
   return (
     <>
       <h1>Edit Fish</h1>
-      <form autoComplete="off">
+      <form autoComplete="off" ref={formElement} onSubmit={handleSubmit}>
         <div className="form-group mb-3">
           <label htmlFor="type-input" className="form-label">
             Fish Type
@@ -15,6 +33,8 @@ const EditFish = () => {
             className="form-control"
             id="type-input"
             name="type"
+            value={formData.type}
+            onChange={handleChange}
             required
           />
         </div>
@@ -27,6 +47,8 @@ const EditFish = () => {
             className="form-control"
             id="weight-input"
             name="weight"
+            value={formData.weight}
+            onChange={handleChange}
           />
         </div>
         <div className="form-group mb-3">
@@ -36,6 +58,8 @@ const EditFish = () => {
           <select 
             name="reel" 
             id="reel-input"
+            value={formData.reel}
+            onChange={handleChange}
           >
             <option value="...">...</option>
             <option value="Spincast Reel">Spincast Reel</option>
@@ -51,6 +75,8 @@ const EditFish = () => {
           <select 
             name="bait" 
             id="bait-input"
+            value={formData.bait}
+            onChange={handleChange}
           >
             <option value="...">...</option>
             <option value="Plastic">Plastic</option>
@@ -63,6 +89,7 @@ const EditFish = () => {
           <button
             type="submit"
             className="btn btn-primary btn-fluid"
+            disabled={!validForm}
           >
             Save Fish
           </button>

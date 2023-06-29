@@ -56,6 +56,14 @@ function App() {
     setFishes(fishes.filter(fish => fish._id !== deletedFish._id))
   }
 
+  const handleUpdateFish = updatedFishFormData => {
+    const newFishesArray = fishes.map(fish =>
+      fish._id === updatedFishFormData._id ? updatedFishFormData : fish
+    )
+    setFishes(newFishesArray)
+    navigate('/fish')
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -88,6 +96,7 @@ function App() {
         <Route
           path="/edit"
           element={<EditFish />}
+          handleUpdateFish={handleUpdateFish}
         />
         <Route
           path="/auth/change-password"

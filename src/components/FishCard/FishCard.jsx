@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const FishCard = ({fish, handleDeleteFish, user}) => {
   return (
@@ -9,6 +9,9 @@ const FishCard = ({fish, handleDeleteFish, user}) => {
       </div>
       {user?.profile === fish.owner._id && 
         <div className="card-footer">
+          <Link className="btn btn-sm btn-warning" to="/edit" state={{fish}}>
+            Edit
+          </Link>
           <button className="btn btn-sm btn-danger m-left" onClick={() => handleDeleteFish(fish._id)}>
             Delete
           </button>
