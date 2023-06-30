@@ -44,9 +44,21 @@ async function update(fish) {
   return res.json()
 }
 
+async function addPhoto(photoData, fishId) {
+  const res = await fetch(`${BASE_URL}/${fishId}/add-photo`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: photoData
+  })
+  return await res.json()
+}
+
 export {
   create,
   getAll,
   deleteOne,
   update,
+  addPhoto,
 }

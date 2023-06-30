@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const AddFish = (props) => {
@@ -7,11 +8,12 @@ const AddFish = (props) => {
     weight: 0,
     reel: "N/A",
     bait: "N/A",
+    date: "yyyy-MM-dd",
   })
-
+  const [photoData, setPhotoData] = useState({})
   const [validForm, setValidForm] = useState(false)
-
   const formElement = useRef()
+  const navigate = useNavigate()
 
   useEffect(() => {
     formElement.current.checkValidity() ? setValidForm(true) : setValidForm(false)
@@ -23,7 +25,13 @@ const AddFish = (props) => {
 
   const handleSubmit = evt => {
     evt.preventDefault()
+    props.handleAddFish(formData, photoData.photo)
     props.handleAddFish(formData)
+    navigate('/fish')
+  }
+
+  const handleChangePhoto = evt => {
+    setPhotoData({photo: evt.target.files[0]})
   }
 
   return (
@@ -74,6 +82,8 @@ const AddFish = (props) => {
             <option value="Spinning Reel">Spinning Reel</option>
             <option value="Fly Reel">Fly Reel</option>
           </select>
+        </div>
+        <div>
           <label htmlFor="bait-input">
             Bait Used
           </label>
@@ -90,12 +100,37 @@ const AddFish = (props) => {
             <option value="Dead">Dead Bait</option>
           </select>
         </div>
+        <div>
+          <label htmlFor="date-input">
+            Date Caught
+          </label>
+          <input 
+            type="date" 
+            name="date"
+            id="date-input"
+            value={formData.date}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group mb-4">
+          <label htmlFor="photo-upload" className="form-label">
+            Upload Photo
+          </label>
+          <input 
+            type="file"
+            className="form-control"
+            name="photo"
+            id="photo-upload"
+            onChange={handleChangePhoto}
+          />
+        </div>
         <div className="d-grid">
           <button
             type="submit"
             className="btn btn-primary btn-fluid"
             disabled={!validForm}
-            >
+            
+          >
             Add Catch
           </button>
         </div>

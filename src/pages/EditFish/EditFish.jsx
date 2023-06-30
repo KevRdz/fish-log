@@ -85,6 +85,18 @@ const EditFish = (props) => {
             <option value="Dead">Dead Bait</option>
           </select>
         </div>
+        <div>
+          <label htmlFor="date-input">
+            Date Caught
+          </label>
+          <input 
+            type="date" 
+            name="date"
+            id="date-input"
+            value={formData.date}
+            onChange={handleChange}
+          />
+        </div>
         <div className="d-grid mb-3">
           <button
             type="submit"

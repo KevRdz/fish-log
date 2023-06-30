@@ -5,7 +5,7 @@ const FishCard = ({fish, handleDeleteFish, user}) => {
     <div className="card">
       <div className="card-body">
         <h2 className="card-text">{fish.name}</h2>
-        <p className="card-text">This {fish.type} is {fish.weight}lbs, and was caught using a {fish.reel} with {fish.bait} bait.</p>
+        <p className="card-text">This {fish.type} is {fish.weight}lbs, and was caught using a {fish.reel} with {fish.bait} bait on {fish.date}.</p>
       </div>
       {user?.profile === fish.owner._id && 
         <div className="card-footer">

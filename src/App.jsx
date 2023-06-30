@@ -46,9 +46,19 @@ function App() {
     setUser(authService.getUser())
   }
 
-  const handleAddFish = async newFishData => {
+  const fishPhotoHelper = async (photo, id) => {
+    const photoData = new FormData()
+    photoData.append('photo', photo)
+    return await fishService.addPhoto(photoData, id)
+  }
+
+  const handleAddFish = async (newFishData, photo) => {
     const newFish = await fishService.create(newFishData)
+    if (photo) {
+      newFish.photo = await fishPhotoHelper(photo, newFish._id)
+    }
     setFishes([...fishes, newFish])
+    navigate('/fish')
   }
 
   const handleDeleteFish = async id => {
