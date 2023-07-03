@@ -66,8 +66,11 @@ function App() {
     setFishes(fishes.filter(fish => fish._id !== deletedFish._id))
   }
 
-  const handleUpdateFish = async updatedFishData => {
+  const handleUpdateFish = async (updatedFishData, photo) => {
     const updatedFish = await fishService.update(updatedFishData)
+    if (photo) {
+      updatedFish.photo = await fishPhotoHelper(photo, updatedFish._id)
+    }
     const newFishesArray = fishes.map(fish =>
       fish._id === updatedFish._id ? updatedFish : fish
     )

@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 const FishCard = ({fish, handleDeleteFish, user}) => {
   return (
     <div className="card">
+      <img 
+        src={fish.photo} 
+        alt="fish"
+        className="card-img-top"
+        style={{width: '640px'}}
+      />
       <div className="card-body">
         <h2 className="card-text">{fish.name}</h2>
         <p className="card-text">This {fish.type} is {fish.weight}lbs, and was caught using a {fish.reel} with {fish.bait} bait on {fish.date}.</p>

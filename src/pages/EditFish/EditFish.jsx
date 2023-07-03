@@ -6,6 +6,7 @@ const EditFish = (props) => {
   const [validForm, setValidForm] = useState(true)
   const formElement = useRef()
   const [formData, setFormData] = useState(location.state.fish)
+  const [photoData, setPhotoData] = useState({})
 
   const handleChange = evt => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
@@ -17,7 +18,11 @@ const EditFish = (props) => {
 
   const handleSubmit = evt => {
     evt.preventDefault()
-    props.handleUpdateFish(formData)
+    props.handleUpdateFish(formData, photoData.photo)
+  }
+
+  const handleChangePhoto = (evt) => {
+    setPhotoData({photo: evt.target.files[0]})
   }
 
   return (
@@ -95,6 +100,18 @@ const EditFish = (props) => {
             id="date-input"
             value={formData.date}
             onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="photo-upload">
+            {formData.photo ? "Replace existing photo" : "Add Photo"}
+          </label>
+          <input 
+            type="file" 
+            className="form-control"
+            id="photo-upload"
+            name="photo"
+            onChange={handleChangePhoto}
           />
         </div>
         <div className="d-grid mb-3">
