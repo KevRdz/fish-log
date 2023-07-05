@@ -109,8 +109,8 @@ function App() {
         />
         <Route
           path="/edit"
-          element={<EditFish />}
-          handleUpdateFish={handleUpdateFish}
+          element={<EditFish handleUpdateFish={handleUpdateFish} />}
+          
         />
         <Route
           path="/auth/change-password"

@@ -8,7 +8,7 @@ const AddFish = (props) => {
     weight: 0,
     reel: "N/A",
     bait: "N/A",
-    date: "yyyy-MM-dd",
+    // date: "yyyy-MM-dd",
   })
   const [photoData, setPhotoData] = useState({})
   const [validForm, setValidForm] = useState(false)
@@ -26,7 +26,6 @@ const AddFish = (props) => {
   const handleSubmit = evt => {
     evt.preventDefault()
     props.handleAddFish(formData, photoData.photo)
-    props.handleAddFish(formData)
     navigate('/fish')
   }
 
@@ -100,7 +99,7 @@ const AddFish = (props) => {
             <option value="Dead">Dead Bait</option>
           </select>
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="date-input">
             Date Caught
           </label>
@@ -111,7 +110,7 @@ const AddFish = (props) => {
             value={formData.date}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
         <div className="form-group mb-4">
           <label htmlFor="photo-upload" className="form-label">
             Upload Photo

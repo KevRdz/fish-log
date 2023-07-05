@@ -1,14 +1,22 @@
 import { Link } from "react-router-dom";
 
-const FishCard = ({fish, handleDeleteFish, user}) => {
+const FishCard = ({fish, handleDeleteFish, user, /* randFishImgId */}) => {
   return (
     <div className="card">
-      <img 
-        src={fish.photo} 
+      {fish.photo
+        ? <img src={fish.photo} alt="fish" style={{width: '240px'}}/>
+        : null
+      }
+      {/* <img 
+        src={
+          fish.photo
+            ? fish.photo
+            : `https://picsum.photos/id/${randFishImgId}/640/480`
+        } 
         alt="fish"
         className="card-img-top"
-        style={{width: '640px'}}
-      />
+        style={{width: '240px'}}
+      /> */}
       <div className="card-body">
         <h2 className="card-text">{fish.name}</h2>
         <p className="card-text">This {fish.type} is {fish.weight}lbs, and was caught using a {fish.reel} with {fish.bait} bait on {fish.date}.</p>
