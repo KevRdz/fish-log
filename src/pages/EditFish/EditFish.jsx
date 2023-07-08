@@ -90,7 +90,7 @@ const EditFish = (props) => {
             <option value="Dead">Dead Bait</option>
           </select>
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="date-input">
             Date Caught
           </label>
@@ -101,7 +101,7 @@ const EditFish = (props) => {
             value={formData.date}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
         <div>
           <label htmlFor="photo-upload">
             {formData.photo ? "Replace existing photo" : "Add Photo"}

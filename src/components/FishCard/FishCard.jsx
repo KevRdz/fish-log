@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
-const FishCard = ({fish, handleDeleteFish, user, /* randFishImgId */}) => {
+const FishCard = ({fish, handleDeleteFish, user, randFishImgId}) => {
   return (
     <div className="card">
-      {fish.photo
+      {/* {fish.photo
         ? <img src={fish.photo} alt="fish" style={{width: '240px'}}/>
         : null
-      }
-      {/* <img 
+      } */}
+      <img 
         src={
           fish.photo
             ? fish.photo
@@ -16,10 +16,13 @@ const FishCard = ({fish, handleDeleteFish, user, /* randFishImgId */}) => {
         alt="fish"
         className="card-img-top"
         style={{width: '240px'}}
-      /> */}
+      />
       <div className="card-body">
         <h2 className="card-text">{fish.name}</h2>
-        <p className="card-text">This {fish.type} is {fish.weight}lbs, and was caught using a {fish.reel} with {fish.bait} bait on {fish.date}.</p>
+        <p className="card-text">Fish Type: {fish.type.toUpperCase()}</p>
+        <p className="card-text">Fish Weight: {fish.weight}lbs</p>
+        <p className="card-text">Reel Used: {fish.reel}</p>
+        <p className="card-text">Bait Used: {fish.bait}</p>
       </div>
       {user?.profile === fish.owner._id && 
         <div className="card-footer">

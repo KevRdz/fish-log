@@ -80,47 +80,49 @@ function App() {
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
-      <Routes>
-        <Route path="/" element={<Landing user={user} />} />
-        <Route
-          path="/profiles"
-          element={
-            <ProtectedRoute user={user}>
-              <Profiles />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/auth/signup"
-          element={<Signup handleAuthEvt={handleAuthEvt} />}
-        />
-        <Route
-          path="/auth/login"
-          element={<Login handleAuthEvt={handleAuthEvt} />}
-        />
-        <Route
-          path="/add"
-          element={<AddFish handleAddFish={handleAddFish}/>}
-        />
-        <Route
-          path="/fish"
-          element={<FishList fishes={fishes} handleDeleteFish={handleDeleteFish} user={user}/>}
-        />
-        <Route
-          path="/edit"
-          element={<EditFish handleUpdateFish={handleUpdateFish} />}
-          
-        />
-        <Route
-          path="/auth/change-password"
-          element={
-            <ProtectedRoute user={user}>
-              <ChangePassword handleAuthEvt={handleAuthEvt} />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+      <div className='App'>
+        <NavBar user={user} handleLogout={handleLogout} />
+        <Routes>
+          <Route path="/" element={<Landing user={user} />} />
+          <Route
+            path="/profiles"
+            element={
+              <ProtectedRoute user={user}>
+                <Profiles />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/auth/signup"
+            element={<Signup handleAuthEvt={handleAuthEvt} />}
+          />
+          <Route
+            path="/auth/login"
+            element={<Login handleAuthEvt={handleAuthEvt} />}
+          />
+          <Route
+            path="/add"
+            element={<AddFish handleAddFish={handleAddFish}/>}
+          />
+          <Route
+            path="/fish"
+            element={<FishList fishes={fishes} handleDeleteFish={handleDeleteFish} user={user}/>}
+          />
+          <Route
+            path="/edit"
+            element={<EditFish handleUpdateFish={handleUpdateFish} />}
+            
+          />
+          <Route
+            path="/auth/change-password"
+            element={
+              <ProtectedRoute user={user}>
+                <ChangePassword handleAuthEvt={handleAuthEvt} />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </div>
     </>
   )
 }
