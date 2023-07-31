@@ -11,4 +11,12 @@
 
 a {
   text-decoration: none;
+  color: white;
+}
+
+li:hover{
+  background-color: grey;
+  border-radius: 25px;
+  padding: 2px 12px;
+  transition: all 100ms;
 }
