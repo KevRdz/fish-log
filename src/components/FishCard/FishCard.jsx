@@ -19,7 +19,7 @@ const FishCard = ({fish, handleDeleteFish, user, randFishImgId}) => {
       />
       <div className="card-body">
         <h2 className="card-text">{fish.name}</h2>
-        <p className="card-text">Fish Type: {fish.type.toUpperCase()}</p>
+        <p className="card-text">Fish Type: {fish.type}</p>
         <p className="card-text">Fish Weight: {fish.weight}lbs</p>
         <p className="card-text">Reel Used: {fish.reel}</p>
         <p className="card-text">Bait Used: {fish.bait}</p>

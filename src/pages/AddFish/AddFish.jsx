@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./AddFish.css"
 
 
 const AddFish = (props) => {
@@ -64,7 +65,7 @@ const AddFish = (props) => {
             onChange={handleChange}
           />
         </div>
-        <h3>Gear Used</h3>
+        <h1>Gear Used</h1>
         <div>
           <label htmlFor="reel-input">
             Reel Used

@@ -8,9 +8,9 @@ const FishList = (props) => {
     <>
       <h1>Fish List</h1>
       <div className={styles.container}>
-        {props.fishes.map(fish => 
-          <FishCard key={fish._id} fish={fish} handleDeleteFish={props.handleDeleteFish} user={props.user} randFishImgId={fishIds[Math.floor(Math.random()*(fishIds.length))]}/>
-        )}
+        {props.fishes.map(fish =>{
+            <FishCard key={fish._id} fish={fish} handleDeleteFish={props.handleDeleteFish} user={props.user} randFishImgId={fishIds[Math.floor(Math.random()*(fishIds.length))]}/>
+          })}
       </div>
     </>
   );
